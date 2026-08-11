@@ -39,11 +39,15 @@
     --gold-dim:rgba(160,253,26,.14);
     --green-deep:#49A437;
     --line:rgba(243,239,231,.10);
-    --radius:3px;
+    --radius:10px;
+    --radius-sm:6px;
     --maxw:1180px;
     --ff-display:'Big Shoulders Display',sans-serif;
     --ff-body:'Manrope',sans-serif;
     --ff-mono:'IBM Plex Mono',monospace;
+    --shadow-sm:0 2px 10px rgba(0,0,0,.25);
+    --shadow-md:0 12px 32px rgba(0,0,0,.35);
+    --shadow-glow:0 12px 32px rgba(160,253,26,.16);
   }
 
   *{box-sizing:border-box; margin:0; padding:0;}
@@ -116,13 +120,13 @@
     background:var(--gold);
     color:var(--bg);
   }
-  .btn-primary:hover{background:var(--gold-bright); transform:translateY(-1px);}
+  .btn-primary:hover{background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 10px 28px rgba(160,253,26,.28);}
   .btn-ghost{
     background:transparent;
     border-color:var(--line);
     color:var(--ink);
   }
-  .btn-ghost:hover{border-color:var(--gold); color:var(--gold);}
+  .btn-ghost:hover{border-color:var(--gold); color:var(--gold); transform:translateY(-2px);}
   .btn:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
 
   /* ============ PROGRESS RAIL (signature element) ============ */
@@ -202,12 +206,14 @@
   .top-banner:hover{background:var(--gold-bright);}
 
   /* ============ HEADER ============ */
-  .sticky-top-wrap{position:sticky; top:0; z-index:40;}
   header{
+    position:sticky; top:0; z-index:40;
     background:rgba(11,12,14,.88);
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
+    transition:box-shadow .25s ease;
   }
+  header.is-scrolled{box-shadow:var(--shadow-md);}
   header .wrap{
     display:flex; align-items:center; justify-content:space-between;
     padding-top:18px; padding-bottom:18px;
@@ -265,6 +271,13 @@
     color:var(--ink-muted);
   }
 
+  /* scroll reveal */
+  .reveal-init{opacity:0; transform:translateY(18px);}
+  .reveal-init.is-visible{
+    opacity:1; transform:translateY(0);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+
   /* placeholder marker */
   .placeholder{
     border:1px dashed rgba(160,253,26,.55);
@@ -288,17 +301,21 @@
   .problema{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
   .problema h2{font-size:clamp(28px,4vw,42px); max-width:680px; margin-bottom:48px;}
   .pain-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line);}
-  .pain-card{background:var(--bg-alt); padding:32px 28px;}
+  .pain-card{background:var(--bg-alt); padding:38px 32px; transition:background .2s ease;}
+  .pain-card:hover{background:var(--bg-raised);}
   .pain-card .mark{
     font-family:var(--ff-mono); color:var(--gold); font-size:13px; margin-bottom:14px; display:block;
+    transition:transform .2s ease;
   }
+  .pain-card:hover .mark{transform:translateX(3px);}
   .pain-card p{color:var(--ink-muted); font-size:15px;}
   @media (max-width:900px){ .pain-grid{grid-template-columns:1fr;} }
 
   /* ============ MÉTODO ============ */
   .metodo h2{font-size:clamp(28px,4vw,42px); max-width:680px; margin-bottom:56px;}
-  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:28px;}
-  .step{border-top:1px solid var(--gold); padding-top:18px;}
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:32px;}
+  .step{border-top:1px solid var(--gold); padding-top:18px; transition:transform .2s ease;}
+  .step:hover{transform:translateY(-3px);}
   .step .idx{font-family:var(--ff-mono); font-size:13px; color:var(--gold); display:block; margin-bottom:14px;}
   .step h3{font-family:var(--ff-body); text-transform:none; font-size:17px; font-weight:700; margin-bottom:10px; letter-spacing:0;}
   .step p{color:var(--ink-muted); font-size:14.5px;}
@@ -312,9 +329,10 @@
   .auth-photo{
     width:220px;
     aspect-ratio:480/565;
-    border-radius:var(--radius);
+    border-radius:calc(var(--radius) + 4px);
     overflow:hidden;
     border:1px solid var(--line);
+    box-shadow:var(--shadow-md);
   }
   .auth-photo img{
     width:100%; height:100%;
@@ -335,8 +353,10 @@
   .ig-link .ig-count{color:var(--gold);}
   .cred-tag{
     font-family:var(--ff-mono); font-size:12px; color:var(--ink-muted);
-    border:1px solid var(--line); padding:8px 14px; border-radius:var(--radius);
+    border:1px solid var(--line); padding:8px 14px; border-radius:var(--radius-sm);
+    transition:border-color .15s ease, color .15s ease, transform .15s ease;
   }
+  .cred-tag:hover{border-color:var(--gold); color:var(--ink); transform:translateY(-1px);}
   @media (max-width:700px){
     .auth-grid{grid-template-columns:1fr;}
     .auth-photo{width:140px; flex-shrink:0;}
@@ -377,6 +397,8 @@
   .ba-slot.ba-photo{
     border:1px solid var(--line);
     background:var(--bg-alt);
+    border-radius:calc(var(--radius) + 4px);
+    box-shadow:var(--shadow-md);
   }
   .ba-slot.ba-photo img{width:100%; height:auto; display:block;}
   @media (min-width:701px){
@@ -408,13 +430,16 @@
     font-family:var(--ff-display); font-weight:800; font-size:24px; color:var(--gold);
   }
 
-  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
   .testi-card{
     background:var(--bg-alt);
     border:1px solid var(--line);
     border-radius:var(--radius);
-    padding:26px;
+    padding:30px;
+    box-shadow:var(--shadow-sm);
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
+  .testi-card:hover{transform:translateY(-5px); box-shadow:var(--shadow-md); border-color:rgba(243,239,231,.22);}
   .testi-quote{color:var(--ink); font-size:15px; margin-bottom:18px; min-height:80px;}
   .testi-name{font-family:var(--ff-mono); font-size:12px; color:var(--gold);}
   .testi-result{font-family:var(--ff-mono); font-size:11px; color:var(--ink-muted); margin-top:2px;}
@@ -426,25 +451,30 @@
   .oferta h2{font-size:clamp(28px,4vw,42px); max-width:720px; margin-bottom:16px;}
   .oferta > .wrap > p.lead{color:var(--ink-muted); max-width:600px; margin-bottom:56px; font-size:16px;}
 
-  .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
+  .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; align-items:stretch;}
   .plan{
     background:var(--bg);
     border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:32px 26px;
+    border-radius:calc(var(--radius) + 4px);
+    padding:36px 30px;
     display:flex; flex-direction:column;
     position:relative;
+    box-shadow:var(--shadow-sm);
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
   }
+  .plan:hover{transform:translateY(-6px); box-shadow:var(--shadow-md); border-color:rgba(243,239,231,.22);}
   .plan.featured{
     border-color:var(--gold);
     background:linear-gradient(180deg, var(--gold-dim), transparent 40%), var(--bg);
+    box-shadow:var(--shadow-glow);
   }
+  .plan.featured:hover{box-shadow:0 16px 40px rgba(160,253,26,.22);}
   .plan-tag{
     position:absolute; top:-13px; left:26px;
     background:var(--gold); color:var(--bg);
     font-family:var(--ff-mono); font-size:11px; font-weight:600;
     letter-spacing:.06em; text-transform:uppercase;
-    padding:5px 12px; border-radius:var(--radius);
+    padding:5px 12px; border-radius:var(--radius-sm);
   }
   .plan-name{font-family:var(--ff-mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:10px;}
   .plan-price{font-family:var(--ff-display); font-size:38px; font-weight:800; margin-bottom:2px;}
@@ -468,8 +498,9 @@
   .garantia{padding:64px 0;}
   .garantia-box{
     max-width:760px; margin:0 auto;
-    border:1px solid var(--line); border-radius:var(--radius);
-    padding:40px; text-align:center;
+    border:1px solid var(--line); border-radius:calc(var(--radius) + 4px);
+    padding:44px 40px; text-align:center;
+    box-shadow:var(--shadow-sm);
   }
   .garantia-box .g-icon{margin-bottom:18px;}
   .garantia-box h3{font-family:var(--ff-display); font-size:22px; margin-bottom:12px;}
@@ -518,6 +549,8 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<a href="#oferta" class="top-banner" data-track="top_banner_cta">Últimas vagas para Agosto</a>
+
 <div class="topbar-progress"><div class="topbar-progress-fill" id="topFill"></div></div>
 
 <aside class="rail" id="rail">
@@ -528,18 +561,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="rail-tick" data-section="oferta"><span>OFERTA</span><div class="rail-dot"></div></div>
 </aside>
 
-<div class="sticky-top-wrap">
-  <a href="#oferta" class="top-banner" data-track="top_banner_cta">Últimas vagas para Agosto</a>
-  <header>
-    <div class="wrap">
-      <a href="#" class="logo-link">
-        <img src="assets/logo-renan-caceres.png" alt="Renan Caceres · Consultoria Esportiva" class="logo-img">
-        <span class="logo-name">Renan Caceres</span>
-      </a>
-      <a href="#oferta" class="btn btn-primary" data-track="header_cta">Ver planos</a>
-    </div>
-  </header>
-</div>
+<header>
+  <div class="wrap">
+    <a href="#" class="logo-link">
+      <img src="assets/logo-renan-caceres.png" alt="Renan Caceres · Consultoria Esportiva" class="logo-img">
+      <span class="logo-name">Renan Caceres</span>
+    </a>
+    <a href="#oferta" class="btn btn-primary" data-track="header_cta">Ver planos</a>
+  </div>
+</header>
 
 <!-- ============ HERO ============ -->
 <section class="hero">
@@ -575,15 +605,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="eyebrow">Se você já tentou de tudo</div>
     <h2>O problema nunca foi falta de esforço.</h2>
     <div class="pain-grid">
-      <div class="pain-card">
+      <div class="pain-card reveal-init">
         <span class="mark">01</span>
         <p>Treino de aplicativo genérico que ignora sua rotina, suas lesões e o seu histórico. Todo mundo recebe o mesmo plano.</p>
       </div>
-      <div class="pain-card">
+      <div class="pain-card reveal-init">
         <span class="mark">02</span>
         <p>Suporte que desaparece depois que você paga. Dúvida sem resposta, ajuste sem prazo.</p>
       </div>
-      <div class="pain-card">
+      <div class="pain-card reveal-init">
         <span class="mark">03</span>
         <p>Correção que demora semanas pra sair do papel, e seu resultado fica parado esperando.</p>
       </div>
@@ -597,22 +627,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="eyebrow">Como funciona</div>
     <h2>Um método construído em cima de você, não do genérico.</h2>
     <div class="steps">
-      <div class="step">
+      <div class="step reveal-init">
         <span class="idx">01</span>
         <h3>Avaliação inicial</h3>
         <p>Objetivo, rotina, histórico de treino e restrições. Nada de plano padrão.</p>
       </div>
-      <div class="step">
+      <div class="step reveal-init">
         <span class="idx">02</span>
         <h3>Plano individualizado</h3>
         <p>Treino e nutrição desenhados pra sua realidade, não pra realidade de outra pessoa.</p>
       </div>
-      <div class="step">
+      <div class="step reveal-init">
         <span class="idx">03</span>
         <h3>Execução acompanhada</h3>
         <p>Acesso direto via app e WhatsApp: dúvida não espera até segunda-feira.</p>
       </div>
-      <div class="step">
+      <div class="step reveal-init">
         <span class="idx">04</span>
         <h3>Ajuste contínuo</h3>
         <p>Feedback semanal, análise de fotos e mudanças ilimitadas sempre que necessário.</p>
@@ -657,15 +687,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Números reais de quem já passou pelo processo: não é sobre o primeiro mês, é sobre consistência.</p>
 
     <div class="stat-row">
-      <div class="stat-card">
+      <div class="stat-card reveal-init">
         <span class="num">2.000+</span>
         <span class="label">alunos atendidos</span>
       </div>
-      <div class="stat-card placeholder">
+      <div class="stat-card placeholder reveal-init">
         <span class="num">[X]%</span>
         <span class="label">de adesão média ao plano</span>
       </div>
-      <div class="stat-card placeholder">
+      <div class="stat-card placeholder reveal-init">
         <span class="num">[X]</span>
         <span class="label">kg de gordura eliminados no total</span>
       </div>
@@ -774,17 +804,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="testi-grid">
-      <div class="testi-card">
+      <div class="testi-card reveal-init">
         <p class="testi-quote">"Estou muito feliz com os resultados, com os 20 quilos perdidos. Achei que nunca iria chegar nesse peso novamente. Agradeço pela dedicação, pela paciência e pelo profissionalismo. A dieta é muito fácil e prática de seguir, e os treinos dão um UP."</p>
         <div class="testi-name">Talita</div>
         <div class="testi-result">-20kg</div>
       </div>
-      <div class="testi-card">
+      <div class="testi-card reveal-init">
         <p class="testi-quote">"Tenho 38 anos, cheia de questões internas e traumas, mas pela primeira vez na vida tô me aceitando e amando cada etapa dessa nova vida e imagem. É como ver a minha imagem no espelho e me reconhecer nela. Seu trabalho agrega demais na vida das pessoas."</p>
         <div class="testi-name">Carla</div>
         <div class="testi-result">Nova relação com o corpo e a autoestima</div>
       </div>
-      <div class="testi-card">
+      <div class="testi-card reveal-init">
         <p class="testi-quote placeholder" style="padding:12px;">[Inserir depoimento real do aluno 3]</p>
         <div class="testi-name">[Nome do aluno]</div>
         <div class="testi-result">[Resultado obtido]</div>
@@ -804,7 +834,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="lead">Recomposição corporal é processo, não evento. Os três planos têm exatamente o mesmo acompanhamento: a diferença é o tempo que você dá pro método funcionar, e o quanto isso economiza no seu bolso.</p>
 
     <div class="plans">
-      <div class="plan featured">
+      <div class="plan featured reveal-init">
         <span class="plan-tag">Recomendado</span>
         <div class="plan-name">Trimestral · 3 meses</div>
         <div class="plan-price">R$ 150<small>/mês no cartão (3x)</small></div>
@@ -819,7 +849,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="SEU_LINK_KIWIFY_TRIMESTRAL" class="btn btn-primary" data-track="select_plan_trimestral" data-plan="trimestral">Quero esse plano</a>
       </div>
 
-      <div class="plan">
+      <div class="plan reveal-init">
         <div class="plan-name">Semestral · 6 meses</div>
         <div class="plan-price">R$ 125<small>/mês no cartão (6x)</small></div>
         <div class="plan-pix">ou R$ 749,90 à vista no PIX</div>
@@ -833,7 +863,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="SEU_LINK_KIWIFY_SEMESTRAL" class="btn btn-ghost" data-track="select_plan_semestral" data-plan="semestral">Quero esse plano</a>
       </div>
 
-      <div class="plan">
+      <div class="plan reveal-init">
         <div class="plan-name">Anual · 12 meses</div>
         <div class="plan-price">R$ 100<small>/mês no cartão (12x)</small></div>
         <div class="plan-pix">ou R$ 1.199,90 à vista no PIX</div>
@@ -855,7 +885,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============ GARANTIA ============ -->
 <section class="garantia">
   <div class="wrap">
-    <div class="garantia-box">
+    <div class="garantia-box reveal-init">
       <svg class="g-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" style="margin:0 auto 18px;"><path d="M12 2L4 5V11C4 16 7.5 20.5 12 22C16.5 20.5 20 16 20 11V5L12 2Z" stroke="#A0FD1A" stroke-width="1.6"/><path d="M8.5 12L11 14.5L16 9" stroke="#A0FD1A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <h3>7 dias de garantia incondicional</h3>
       <p>Se não fizer sentido pra você, devolvemos 100% do valor investido. Sem letra miúda.</p>
@@ -919,6 +949,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const topFill = document.getElementById('topFill');
   const ticks = document.querySelectorAll('.rail-tick');
   const sectionEls = Array.from(ticks).map(t => document.getElementById(t.dataset.section));
+  const stickyHeader = document.querySelector('header');
 
   function onScroll(){
     const scrollTop = window.scrollY;
@@ -927,6 +958,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if(railFill) railFill.style.setProperty('--fill', pct + '%');
     if(railFill) railFill.style.height = pct + '%';
     if(topFill) topFill.style.width = pct + '%';
+    if(stickyHeader) stickyHeader.classList.toggle('is-scrolled', scrollTop > 4);
 
     sectionEls.forEach((el, i) => {
       if(!el) return;
@@ -940,6 +972,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
   document.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+
+  // ===== Scroll reveal =====
+  const revealEls = document.querySelectorAll('.reveal-init');
+  if('IntersectionObserver' in window && revealEls.length){
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(el => revealObserver.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
 
   // ===== Antes/Depois carousel nav =====
   const baCarousel = document.getElementById('baCarousel');

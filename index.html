@@ -477,6 +477,13 @@
     padding:5px 12px; border-radius:var(--radius-sm);
   }
   .plan-name{font-family:var(--ff-mono); font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-muted); margin-bottom:10px;}
+  .plan-save{
+    display:inline-block; margin-left:8px;
+    font-family:var(--ff-mono); font-size:11px; font-weight:700;
+    color:var(--gold); background:var(--gold-dim);
+    padding:2px 8px; border-radius:var(--radius-sm);
+    letter-spacing:.04em; vertical-align:middle;
+  }
   .plan-price{font-family:var(--ff-display); font-size:38px; font-weight:800; margin-bottom:2px;}
   .plan-price small{font-family:var(--ff-mono); font-size:13px; font-weight:500; color:var(--ink-muted); text-transform:none;}
   .plan-pix{font-family:var(--ff-mono); font-size:12.5px; color:var(--ink-muted); margin-bottom:24px;}
@@ -835,7 +842,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="plans">
       <div class="plan featured reveal-init">
-        <span class="plan-tag">Recomendado</span>
+        <span class="plan-tag">Mais vendido</span>
         <div class="plan-name">Trimestral · 3 meses</div>
         <div class="plan-price">R$ 150<small>/mês no cartão (3x)</small></div>
         <div class="plan-pix">ou R$ 449,90 à vista no PIX</div>
@@ -845,12 +852,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Ajustes ilimitados</li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Análise de fotos e feedback periódico</li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Suporte durante todo o período</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Grupo no WhatsApp com dicas semanais</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> App exclusivo de treino e dieta</li>
         </ul>
         <a href="SEU_LINK_KIWIFY_TRIMESTRAL" class="btn btn-primary" data-track="select_plan_trimestral" data-plan="trimestral">Quero esse plano</a>
       </div>
 
       <div class="plan reveal-init">
-        <div class="plan-name">Semestral · 6 meses</div>
+        <div class="plan-name">Semestral · 6 meses <span class="plan-save">Economize 17%</span></div>
         <div class="plan-price">R$ 125<small>/mês no cartão (6x)</small></div>
         <div class="plan-pix">ou R$ 749,90 à vista no PIX</div>
         <ul class="plan-features">
@@ -859,12 +868,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Ajustes ilimitados</li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Análise de fotos e feedback periódico</li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Suporte durante todo o período</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Grupo no WhatsApp com dicas semanais</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> App exclusivo de treino e dieta</li>
         </ul>
         <a href="SEU_LINK_KIWIFY_SEMESTRAL" class="btn btn-ghost" data-track="select_plan_semestral" data-plan="semestral">Quero esse plano</a>
       </div>
 
       <div class="plan reveal-init">
-        <div class="plan-name">Anual · 12 meses</div>
+        <div class="plan-name">Anual · 12 meses <span class="plan-save">Economize 33%</span></div>
         <div class="plan-price">R$ 100<small>/mês no cartão (12x)</small></div>
         <div class="plan-pix">ou R$ 1.199,90 à vista no PIX</div>
         <ul class="plan-features">
@@ -873,6 +884,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Ajustes ilimitados</li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Análise de fotos e feedback periódico</li>
           <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Suporte durante todo o período</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Grupo no WhatsApp com dicas semanais</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5L6.5 12L13 4" stroke="#A0FD1A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> App exclusivo de treino e dieta</li>
         </ul>
         <a href="SEU_LINK_KIWIFY_ANUAL" class="btn btn-ghost" data-track="select_plan_anual" data-plan="anual">Quero esse plano</a>
       </div>

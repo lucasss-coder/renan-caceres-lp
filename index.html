@@ -335,54 +335,69 @@
     margin-bottom:8px;
   }
   .ba-subtitle{color:var(--ink-muted); font-size:16px; margin-bottom:30px;}
-  .ba-carousel-wrap{position:relative; margin-bottom:84px;}
-  .ba-carousel{
-    display:flex; gap:20px; overflow-x:auto;
-    scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
-    scrollbar-width:none; margin:0 -28px 14px; padding:0 28px;
+  /* carrossel de cartas (antes e depois) */
+  .st-stage{
+    position:relative; width:100vw; margin-left:calc(50% - 50vw);
+    height:650px; overflow:hidden; margin-bottom:84px;
+    --w:330px; --h:470px;
   }
-  .ba-carousel::-webkit-scrollbar{display:none;}
-  .ba-item{flex:0 0 100%; scroll-snap-align:center;}
-  .ba-slot{
-    border-radius:var(--radius);
-    display:flex; align-items:center; justify-content:center;
-    text-align:center;
-    overflow:hidden;
+  .st-card{
+    position:absolute; left:50%; top:50%;
+    width:var(--w); height:var(--h);
+    cursor:pointer; outline:none;
+    transition:transform .65s cubic-bezier(.3,.7,.2,1), filter .5s ease;
+    filter:drop-shadow(0 14px 22px rgba(0,0,0,.38));
+    will-change:transform;
+    -webkit-user-select:none; user-select:none;
   }
-  .ba-slot.ba-photo{
-    border:1px solid var(--line);
+  .st-card.no-anim{transition:none;}
+  .st-card.is-center{filter:drop-shadow(0 22px 44px rgba(132,211,154,.20));}
+  .st-card-inner{
+    position:relative; width:100%; height:100%; overflow:hidden;
     background:var(--bg-alt);
-    border-radius:26px;
-    box-shadow:var(--shadow-md);
+    border:2px solid var(--line); border-radius:22px;
+    clip-path:polygon(44px 0, calc(100% - 44px) 0, 100% 44px, 100% 100%, 44px 100%, 0 100%, 0 0);
+    transition:background .4s ease, border-color .4s ease;
   }
-  .ba-slot.ba-photo img{width:100%; height:auto; display:block;}
-  @media (min-width:701px){
-    .ba-slot.ba-photo{max-width:420px; margin:0 auto;}
-    .ba-caption{max-width:420px; margin-left:auto; margin-right:auto;}
+  .st-card.is-center .st-card-inner{background:var(--bg-raised); border-color:var(--accent-line);}
+  .st-card:not(.is-center):hover .st-card-inner{border-color:rgba(255,255,255,.18);}
+  .st-card:focus-visible .st-card-inner{border-color:var(--accent);}
+  .st-cut{
+    position:absolute; right:-2px; top:42px; width:62.2px; height:2px;
+    background:var(--line); transform-origin:top right; transform:rotate(45deg);
+    transition:background .4s ease;
   }
-  .ba-nav{
-    position:absolute; top:calc(50% - 28px); transform:translateY(-50%);
-    width:46px; height:46px; border-radius:50%;
-    background:rgba(15,18,20,.78); border:1px solid rgba(255,255,255,.12); color:var(--ink);
+  .st-card.is-center .st-cut{background:var(--accent-line);}
+  .st-fig{width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--bg);}
+  .st-fig img{
+    width:100%; height:100%; object-fit:cover; object-position:center top;
+    filter:brightness(.6) saturate(.75); transition:filter .5s ease; pointer-events:none;
+  }
+  .st-card.is-center .st-fig img{filter:none;}
+  .ba-caption{padding:16px 22px 0; display:flex; flex-direction:column; gap:3px;}
+  .ba-caption .ba-name{font-weight:700; font-size:17px; color:var(--ink); letter-spacing:-.01em;}
+  .ba-caption .ba-age{font-size:13px; color:var(--ink-muted);}
+  .ba-caption .ba-result{font-weight:800; font-size:18px; line-height:1.25; color:var(--accent); letter-spacing:-.015em;}
+  .st-card:not(.is-center) .ba-caption{opacity:.7;}
+  .st-controls{
+    position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+    display:flex; gap:12px; z-index:300;
+  }
+  .st-btn{
+    width:54px; height:54px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(15,18,20,.85); color:var(--ink);
+    border:1px solid rgba(255,255,255,.14); cursor:pointer;
     backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    font-size:20px; line-height:1; display:flex; align-items:center; justify-content:center;
-    cursor:pointer; z-index:5; transition:border-color .2s ease, color .2s ease, background .2s ease;
+    transition:background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease;
   }
-  .ba-nav:hover{border-color:var(--accent-line); color:var(--accent-bright); background:rgba(15,18,20,.92);}
-  .ba-nav-prev{left:0; animation:baNavLeft 2.2s ease-in-out infinite;}
-  .ba-nav-next{right:0; animation:baNavRight 2.2s ease-in-out infinite;}
-  @keyframes baNavLeft{0%,100%{transform:translateY(-50%) translateX(0);} 50%{transform:translateY(-50%) translateX(-4px);}}
-  @keyframes baNavRight{0%,100%{transform:translateY(-50%) translateX(0);} 50%{transform:translateY(-50%) translateX(4px);}}
-  @media (prefers-reduced-motion: reduce){ .ba-nav-prev, .ba-nav-next{animation:none;} }
-  .ba-caption{
-    margin-top:18px; display:flex; flex-direction:column; gap:4px;
-  }
-  .ba-caption .ba-name{
-    font-weight:700; font-size:18px; color:var(--ink); letter-spacing:-.01em;
-  }
-  .ba-caption .ba-age{font-size:13.5px; color:var(--ink-muted);}
-  .ba-caption .ba-result{
-    font-weight:800; font-size:22px; color:var(--accent); letter-spacing:-.02em;
+  .st-btn:hover{background:var(--accent); border-color:var(--accent); color:#0C1210; transform:translateY(-2px);}
+  .st-btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  @media (max-width:640px){
+    .st-stage{height:590px; --w:262px; --h:392px; margin-bottom:64px;}
+    .st-cut{display:none;}
+    .st-card-inner{clip-path:polygon(34px 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%, 0 0);}
+    .ba-caption{padding:14px 18px 0;}
   }
 
   .testi-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:900px; margin:0 auto;}
@@ -737,90 +752,123 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="ba-label">Antes / Depois</div>
     <p class="ba-subtitle">Confira os resultados dos alunos</p>
-    <div class="ba-carousel-wrap">
-      <button type="button" class="ba-nav ba-nav-prev" aria-label="Ver transformação anterior">‹</button>
-      <div class="ba-carousel" id="baCarousel">
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-07-24 at 16.09.43.jpeg" alt="Antes e depois · transformação de aluna"></div>
+    <div class="st-stage" id="stStage" role="region" aria-roledescription="carrossel" aria-label="Antes e depois dos alunos">
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-07-24 at 16.09.43.jpeg" alt="Antes e depois · transformação de aluna" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Bruna Candido</span>
             <span class="ba-age">34 anos</span>
             <span class="ba-result">-16 kg</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-07-24 at 16.07.44.jpeg" alt="Antes e depois · transformação de aluno"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-07-24 at 16.07.44.jpeg" alt="Antes e depois · transformação de aluno" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Lucas Silva</span>
             <span class="ba-age">30 anos</span>
             <span class="ba-result">-12 kg</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-07-24 at 20.30.16.jpeg" alt="Antes e depois · transformação da aluna Talita"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-07-24 at 20.30.16.jpeg" alt="Antes e depois · transformação da aluna Talita" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Talita</span>
             <span class="ba-result">-20 kg</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-07-24 at 20.32.02.jpeg" alt="Antes e depois · transformação da aluna Carla"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-07-24 at 20.32.02.jpeg" alt="Antes e depois · transformação da aluna Carla" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Carla</span>
             <span class="ba-result">Nova relação com o corpo e a autoestima</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-08-04 at 09.28.42 (1).jpeg" alt="Antes e depois · transformação de aluno"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-08-04 at 09.28.42 (1).jpeg" alt="Antes e depois · transformação de aluno" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Davi Martini</span>
             <span class="ba-result">-25 kg</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.03.jpeg" alt="Antes e depois · transformação de aluno"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.03.jpeg" alt="Antes e depois · transformação de aluno" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Dirceu</span>
             <span class="ba-result">Ganho de massa magra e melhora na composição corporal</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.04.jpeg" alt="Antes e depois · transformação de aluno"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.04.jpeg" alt="Antes e depois · transformação de aluno" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">João Alves</span>
             <span class="ba-result">-12 kg</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.04 (1).jpeg" alt="Antes e depois · transformação de aluna"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.04 (1).jpeg" alt="Antes e depois · transformação de aluna" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Thais Fernanda</span>
             <span class="ba-result">-2,5 kg de gordura (+5kg de massa magra)</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.04 (2).jpeg" alt="Antes e depois · transformação de aluna"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.04 (2).jpeg" alt="Antes e depois · transformação de aluna" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Melissa</span>
             <span class="ba-result">-7,2 kg</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.05.jpeg" alt="Antes e depois · transformação de aluna"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.05.jpeg" alt="Antes e depois · transformação de aluna" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Giovanna Martins</span>
             <span class="ba-result">-16,5 kg</span>
           </div>
         </div>
-        <div class="ba-item">
-          <div class="ba-slot ba-photo"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.05 (2).jpeg" alt="Antes e depois · transformação de aluno"></div>
+      </article>
+      <article class="st-card" tabindex="0">
+        <div class="st-card-inner">
+          <div class="st-fig"><img src="assets/WhatsApp Image 2026-08-04 at 09.33.05 (2).jpeg" alt="Antes e depois · transformação de aluno" loading="lazy" draggable="false"></div>
+          <span class="st-cut" aria-hidden="true"></span>
           <div class="ba-caption">
             <span class="ba-name">Paulo</span>
             <span class="ba-result">De 14% para 6% de gordura corporal</span>
           </div>
         </div>
+      </article>
+      <div class="st-controls">
+        <button type="button" class="st-btn" data-st="prev" aria-label="Aluno anterior"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="st-btn" data-st="next" aria-label="Próximo aluno"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
-      <button type="button" class="ba-nav ba-nav-next" aria-label="Ver próxima transformação">›</button>
     </div>
 
     <div class="testi-grid">
@@ -1037,31 +1085,72 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     countEls.forEach(el => countObserver.observe(el));
   }
 
-  // ===== Antes/Depois: setas + passagem automatica =====
-  const baCarousel = document.getElementById('baCarousel');
-  if(baCarousel){
-    const itemStep = () => baCarousel.querySelector('.ba-item').getBoundingClientRect().width + 20;
-    let autoTimer = null, userStopped = false, inView = false;
-    const autoStep = () => {
-      const atEnd = baCarousel.scrollLeft + baCarousel.clientWidth >= baCarousel.scrollWidth - 10;
-      if(atEnd) baCarousel.scrollTo({left:0, behavior:'smooth'});
-      else baCarousel.scrollBy({left:itemStep(), behavior:'smooth'});
-    };
-    const stopAuto = () => { clearInterval(autoTimer); autoTimer = null; };
-    const startAuto = () => { if(!autoTimer && !userStopped && inView && !reduceMotion) autoTimer = setInterval(autoStep, 4500); };
+  // ===== Antes/Depois: cartas empilhadas =====
+  const stStage = document.getElementById('stStage');
+  if(stStage){
+    const cards = Array.from(stStage.querySelectorAll('.st-card'));
+    const n = cards.length;
+    // comeca com a primeira carta (Bruna) no centro
+    const centerIdx = n % 2 ? (n + 1) / 2 : n / 2;
+    let list = cards.slice(n - centerIdx).concat(cards.slice(0, n - centerIdx));
 
-    document.querySelectorAll('.ba-nav').forEach(btn => {
-      btn.addEventListener('click', () => {
-        userStopped = true; stopAuto();
-        const dir = btn.classList.contains('ba-nav-prev') ? -1 : 1;
-        baCarousel.scrollBy({left: dir * itemStep(), behavior: 'smooth'});
+    const layout = () => {
+      const spacing = list[0].offsetWidth / 1.5;
+      list.forEach((el, i) => {
+        const pos = n % 2 ? i - (n + 1) / 2 : i - n / 2;
+        const c = pos === 0;
+        const odd = Math.abs(pos) % 2 === 1;
+        el.style.transform = 'translate(-50%,-50%) translateX(' + (spacing * pos) + 'px) translateY(' + (c ? -36 : (odd ? 14 : -14)) + 'px) rotate(' + (c ? 0 : (odd ? 2.5 : -2.5)) + 'deg)';
+        el.style.zIndex = String(100 - Math.abs(pos));
+        el.classList.toggle('is-center', c);
+        el.dataset.pos = pos;
+        el.setAttribute('aria-label', c ? 'Aluno em destaque' : 'Ver este aluno');
       });
+    };
+    const move = steps => {
+      const moved = [];
+      if(steps > 0){ for(let i = 0; i < steps; i++){ const el = list.shift(); list.push(el); moved.push(el); } }
+      else { for(let i = 0; i > steps; i--){ const el = list.pop(); list.unshift(el); moved.push(el); } }
+      moved.forEach(el => el.classList.add('no-anim'));   // cartas que "dao a volta" nao atravessam a tela
+      layout();
+      void stStage.offsetWidth;
+      moved.forEach(el => el.classList.remove('no-anim'));
+    };
+
+    cards.forEach(el => el.classList.add('no-anim'));
+    layout();
+    void stStage.offsetWidth;
+    cards.forEach(el => el.classList.remove('no-anim'));
+    window.addEventListener('resize', () => {
+      cards.forEach(el => el.classList.add('no-anim')); layout(); void stStage.offsetWidth; cards.forEach(el => el.classList.remove('no-anim'));
     });
-    ['pointerdown', 'touchstart'].forEach(ev => baCarousel.addEventListener(ev, () => { userStopped = true; stopAuto(); }, {passive:true}));
-    baCarousel.addEventListener('mouseenter', stopAuto);
-    baCarousel.addEventListener('mouseleave', startAuto);
+
+    let autoTimer = null, userStopped = false, inView = false;
+    const stopAuto = () => { clearInterval(autoTimer); autoTimer = null; };
+    const startAuto = () => { if(!autoTimer && !userStopped && inView && !reduceMotion) autoTimer = setInterval(() => move(1), 4200); };
+    const userMove = steps => { userStopped = true; stopAuto(); move(steps); };
+
+    let swiped = false;
+    cards.forEach(el => {
+      el.addEventListener('click', () => { if(swiped) return; const pos = Number(el.dataset.pos); if(pos !== 0) userMove(pos); });
+      el.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); const pos = Number(el.dataset.pos); if(pos !== 0) userMove(pos); } });
+    });
+    stStage.querySelector('[data-st="prev"]').addEventListener('click', () => userMove(-1));
+    stStage.querySelector('[data-st="next"]').addEventListener('click', () => userMove(1));
+    stStage.addEventListener('keydown', e => { if(e.key === 'ArrowLeft') userMove(-1); if(e.key === 'ArrowRight') userMove(1); });
+    stStage.addEventListener('mouseenter', stopAuto);
+    stStage.addEventListener('mouseleave', startAuto);
+    stStage.addEventListener('touchstart', () => { userStopped = true; stopAuto(); }, {passive:true});
+    // deslizar com o dedo / mouse
+    let sx = null;
+    stStage.addEventListener('pointerdown', e => { sx = e.clientX; });
+    stStage.addEventListener('pointerup', e => {
+      if(sx === null) return;
+      const dx = e.clientX - sx; sx = null;
+      if(Math.abs(dx) > 50){ swiped = true; setTimeout(() => { swiped = false; }, 60); userMove(dx < 0 ? 1 : -1); }
+    });
     if('IntersectionObserver' in window){
-      new IntersectionObserver(([e]) => { inView = e.isIntersecting; inView ? startAuto() : stopAuto(); }, {threshold:0.4}).observe(baCarousel);
+      new IntersectionObserver(([e]) => { inView = e.isIntersecting; inView ? startAuto() : stopAuto(); }, {threshold:0.35}).observe(stStage);
     }
   }
 

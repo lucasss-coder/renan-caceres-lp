@@ -412,20 +412,34 @@
     .ba-caption{padding:14px 18px 0;}
   }
 
-  .testi-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:900px; margin:0 auto;}
+  .testi-grid{display:flex; flex-wrap:wrap; justify-content:center; gap:28px; max-width:900px; margin:0 auto;}
   .testi-card{
+    width:100%; max-width:410px;
     background:var(--bg-raised);
     border:1px solid var(--line);
-    border-radius:var(--radius);
-    padding:34px 32px;
+    border-radius:24px;
+    overflow:hidden;
     box-shadow:var(--shadow-sm);
-    transition:transform .25s ease, border-color .25s ease;
+    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
-  .testi-card:hover{transform:translateY(-4px); border-color:rgba(255,255,255,.14);}
-  .testi-quote{color:var(--ink-soft); font-size:15.5px; line-height:1.75; margin-bottom:22px;}
-  .testi-name{font-size:15px; font-weight:700; color:var(--ink);}
-  .testi-result{font-size:13.5px; color:var(--accent); margin-top:2px;}
-  @media (max-width:800px){ .testi-grid{grid-template-columns:1fr;} }
+  .testi-card:hover{transform:translateY(-5px); border-color:rgba(255,255,255,.14); box-shadow:var(--shadow-md);}
+  .testi-media{position:relative; height:270px; overflow:hidden;}
+  .testi-media img{
+    width:100%; height:100%; object-fit:cover; object-position:center 18%;
+    transition:transform .6s ease;
+  }
+  .testi-card:hover .testi-media img{transform:scale(1.05);}
+  .testi-fade{
+    position:absolute; left:0; right:0; bottom:0; height:62%; pointer-events:none;
+    background:linear-gradient(to top, var(--bg-raised) 6%, rgba(23,28,31,0));
+  }
+  .testi-body{padding:0 26px 28px; margin-top:-34px; position:relative; z-index:1;}
+  .testi-quote{
+    color:var(--ink); font-size:15.5px; font-weight:500; line-height:1.7;
+    padding-bottom:20px; margin-bottom:18px; border-bottom:1px solid var(--line);
+  }
+  .testi-name{font-size:16px; font-weight:700; color:var(--ink);}
+  .testi-result{font-size:14px; font-weight:600; color:var(--accent); margin-top:2px;}
   .prova-cta-row{text-align:center; margin-top:64px;}
 
   /* ============ OFERTA ============ */
@@ -885,14 +899,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="testi-grid">
       <div class="testi-card reveal-init">
-        <p class="testi-quote">"Estou muito feliz com os resultados, com os 20 quilos perdidos. Achei que nunca iria chegar nesse peso novamente. Agradeço pela dedicação, pela paciência e pelo profissionalismo. A dieta é muito fácil e prática de seguir, e os treinos dão um UP."</p>
-        <div class="testi-name">Talita</div>
-        <div class="testi-result">-20kg</div>
+        <div class="testi-media">
+          <img src="assets/WhatsApp Image 2026-07-24 at 20.30.16.jpeg" alt="Antes e depois da Talita" loading="lazy">
+          <div class="testi-fade"></div>
+        </div>
+        <div class="testi-body">
+          <p class="testi-quote">“Estou muito feliz com os resultados, com os 20 quilos perdidos. Achei que nunca iria chegar nesse peso novamente. Agradeço pela dedicação, pela paciência e pelo profissionalismo. A dieta é muito fácil e prática de seguir, e os treinos dão um UP.”</p>
+          <p class="testi-name">Talita</p>
+          <p class="testi-result">-20kg</p>
+        </div>
       </div>
       <div class="testi-card reveal-init">
-        <p class="testi-quote">"Tenho 38 anos, cheia de questões internas e traumas, mas pela primeira vez na vida tô me aceitando e amando cada etapa dessa nova vida e imagem. É como ver a minha imagem no espelho e me reconhecer nela. Seu trabalho agrega demais na vida das pessoas."</p>
-        <div class="testi-name">Carla</div>
-        <div class="testi-result">Nova relação com o corpo e a autoestima</div>
+        <div class="testi-media">
+          <img src="assets/WhatsApp Image 2026-07-24 at 20.32.02.jpeg" alt="Antes e depois da Carla" loading="lazy">
+          <div class="testi-fade"></div>
+        </div>
+        <div class="testi-body">
+          <p class="testi-quote">“Tenho 38 anos, cheia de questões internas e traumas, mas pela primeira vez na vida tô me aceitando e amando cada etapa dessa nova vida e imagem. É como ver a minha imagem no espelho e me reconhecer nela. Seu trabalho agrega demais na vida das pessoas.”</p>
+          <p class="testi-name">Carla</p>
+          <p class="testi-result">Nova relação com o corpo e a autoestima</p>
+        </div>
       </div>
     </div>
     <div class="prova-cta-row">

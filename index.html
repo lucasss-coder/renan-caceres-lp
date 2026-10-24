@@ -414,26 +414,19 @@
 
   .testi-grid{display:flex; flex-wrap:wrap; justify-content:center; gap:28px; max-width:900px; margin:0 auto;}
   .testi-card{
-    width:100%; max-width:410px;
+    width:100%; max-width:400px; text-align:center;
     background:var(--bg-raised);
     border:1px solid var(--line);
-    border-radius:24px;
-    overflow:hidden;
+    border-radius:22px;
+    padding:34px 30px 30px;
     box-shadow:var(--shadow-sm);
     transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
   }
   .testi-card:hover{transform:translateY(-5px); border-color:rgba(255,255,255,.14); box-shadow:var(--shadow-md);}
-  .testi-body{padding:30px 28px 30px;}
-  .testi-mark{
-    display:block; font-size:64px; font-weight:800; line-height:.6; height:34px;
-    color:var(--accent); opacity:.85; margin-bottom:6px;
-  }
-  .testi-quote{
-    color:var(--ink); font-size:15.5px; font-weight:500; line-height:1.7;
-    padding-bottom:20px; margin-bottom:18px; border-bottom:1px solid var(--line);
-  }
-  .testi-name{font-size:16px; font-weight:700; color:var(--ink);}
-  .testi-result{font-size:14px; font-weight:600; color:var(--accent); margin-top:2px;}
+  .testi-name{font-size:19px; font-weight:700; color:var(--ink); letter-spacing:-.01em;}
+  .testi-quote{color:var(--ink-muted); font-size:15px; line-height:1.75; margin:14px 0 22px;}
+  .testi-stars{display:flex; justify-content:center; gap:3px; color:#E6C06B;}
+  .testi-stars svg{width:18px; height:18px;}
   .prova-cta-row{text-align:center; margin-top:64px;}
 
   /* ============ OFERTA ============ */
@@ -891,22 +884,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 22 20"><path d="M10.525.464a.5.5 0 0 1 .95 0l2.107 6.482a.5.5 0 0 0 .475.346h6.817a.5.5 0 0 1 .294.904l-5.515 4.007a.5.5 0 0 0-.181.559l2.106 6.483a.5.5 0 0 1-.77.559l-5.514-4.007a.5.5 0 0 0-.588 0l-5.514 4.007a.5.5 0 0 1-.77-.56l2.106-6.482a.5.5 0 0 0-.181-.56L.832 8.197a.5.5 0 0 1 .294-.904h6.817a.5.5 0 0 0 .475-.346z"/></symbol></svg>
     <div class="testi-grid">
       <div class="testi-card reveal-init">
-        <div class="testi-body">
-          <span class="testi-mark" aria-hidden="true">“</span>
-          <p class="testi-quote">Estou muito feliz com os resultados, com os 20 quilos perdidos. Achei que nunca iria chegar nesse peso novamente. Agradeço pela dedicação, pela paciência e pelo profissionalismo. A dieta é muito fácil e prática de seguir, e os treinos dão um UP.</p>
-          <p class="testi-name">Talita</p>
-          <p class="testi-result">-20kg</p>
-        </div>
+        <h3 class="testi-name">Talita</h3>
+        <p class="testi-quote">Estou muito feliz com os resultados, com os 20 quilos perdidos. Achei que nunca iria chegar nesse peso novamente. Agradeço pela dedicação, pela paciência e pelo profissionalismo. A dieta é muito fácil e prática de seguir, e os treinos dão um UP.</p>
+        <div class="testi-stars" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg></div>
       </div>
       <div class="testi-card reveal-init">
-        <div class="testi-body">
-          <span class="testi-mark" aria-hidden="true">“</span>
-          <p class="testi-quote">Tenho 38 anos, cheia de questões internas e traumas, mas pela primeira vez na vida tô me aceitando e amando cada etapa dessa nova vida e imagem. É como ver a minha imagem no espelho e me reconhecer nela. Seu trabalho agrega demais na vida das pessoas.</p>
-          <p class="testi-name">Carla</p>
-          <p class="testi-result">Nova relação com o corpo e a autoestima</p>
-        </div>
+        <h3 class="testi-name">Carla</h3>
+        <p class="testi-quote">Tenho 38 anos, cheia de questões internas e traumas, mas pela primeira vez na vida tô me aceitando e amando cada etapa dessa nova vida e imagem. É como ver a minha imagem no espelho e me reconhecer nela. Seu trabalho agrega demais na vida das pessoas.</p>
+        <div class="testi-stars" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg></div>
       </div>
     </div>
     <div class="prova-cta-row">

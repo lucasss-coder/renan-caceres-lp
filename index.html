@@ -428,12 +428,11 @@
   .testi-stars{display:flex; justify-content:center; gap:3px; color:#E6C06B;}
   .testi-stars svg{width:18px; height:18px;}
   @media (max-width:560px){
-    .testi-grid{flex-wrap:nowrap; gap:10px; align-items:stretch;}
-    .testi-card{flex:1 1 0; min-width:0; width:auto; display:flex; flex-direction:column; padding:20px 12px 18px; border-radius:18px;}
-    .testi-name{font-size:15px;}
-    .testi-quote{font-size:11.5px; line-height:1.6; margin:10px 0 14px; flex:1;}
-    .testi-stars{gap:1px;}
-    .testi-stars svg{width:12px; height:12px;}
+    .testi-grid{flex-wrap:nowrap; justify-content:flex-start; gap:18px; align-items:stretch; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; margin:0 -20px; padding:6px 20px 10px; scroll-padding:0 20px;}
+    .testi-grid::-webkit-scrollbar{display:none;}
+    .testi-card{flex:0 0 78%; max-width:none; width:auto; scroll-snap-align:start; display:flex; flex-direction:column; padding:28px 22px 24px;}
+    .testi-name{font-size:17px;}
+    .testi-quote{font-size:14px; line-height:1.7; margin:12px 0 18px; flex:1;}
   }
   .prova-cta-row{text-align:center; margin-top:64px;}
 

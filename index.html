@@ -413,28 +413,8 @@
     .ba-caption{padding:14px 18px 0;}
   }
 
-  .testi-grid{display:flex; flex-wrap:wrap; justify-content:center; gap:28px; max-width:900px; margin:0 auto;}
-  .testi-card{
-    width:100%; max-width:400px; text-align:center;
-    background:var(--bg-raised);
-    border:1px solid var(--line);
-    border-radius:22px;
-    padding:34px 30px 30px;
-    box-shadow:var(--shadow-sm);
-    transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-  }
-  .testi-card:hover{transform:translateY(-5px); border-color:rgba(255,255,255,.14); box-shadow:var(--shadow-md);}
-  .testi-name{font-size:19px; font-weight:700; color:var(--ink); letter-spacing:-.01em;}
-  .testi-quote{color:var(--ink-muted); font-size:15px; line-height:1.75; margin:14px 0 22px;}
   .testi-stars{display:flex; justify-content:center; gap:3px; color:#E6C06B;}
   .testi-stars svg{width:18px; height:18px;}
-  @media (max-width:560px){
-    .testi-grid{flex-wrap:nowrap; justify-content:flex-start; gap:18px; align-items:stretch; overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; scrollbar-width:none; margin:0 -20px; padding:6px 20px 10px; scroll-padding:0 20px;}
-    .testi-grid::-webkit-scrollbar{display:none;}
-    .testi-card{flex:0 0 78%; max-width:none; width:auto; scroll-snap-align:start; display:flex; flex-direction:column; padding:28px 22px 24px;}
-    .testi-name{font-size:17px;}
-    .testi-quote{font-size:14px; line-height:1.7; margin:12px 0 18px; flex:1;}
-  }
   .g-reviews{margin:56px auto 0; max-width:1020px;}
   .g-summary{display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap; margin-bottom:28px; color:var(--ink-soft); font-size:15px; font-weight:600; text-decoration:none;}
   .g-summary:hover .g-count{color:var(--accent-bright);}
@@ -599,7 +579,6 @@
   /* entrada escalonada dentro das grades */
   .pain-grid > .reveal-init:nth-child(2), .steps > .reveal-init:nth-child(2),
   .plans > .reveal-init:nth-child(2), .stat-row > .reveal-init:nth-child(2),
-  .testi-grid > .reveal-init:nth-child(2){transition-delay:.12s;}
   .pain-grid > .reveal-init:nth-child(3), .steps > .reveal-init:nth-child(3),
   .plans > .reveal-init:nth-child(3), .stat-row > .reveal-init:nth-child(3){transition-delay:.24s;}
   .steps > .reveal-init:nth-child(4){transition-delay:.36s;}
@@ -923,18 +902,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="star" viewBox="0 0 22 20"><path d="M10.525.464a.5.5 0 0 1 .95 0l2.107 6.482a.5.5 0 0 0 .475.346h6.817a.5.5 0 0 1 .294.904l-5.515 4.007a.5.5 0 0 0-.181.559l2.106 6.483a.5.5 0 0 1-.77.559l-5.514-4.007a.5.5 0 0 0-.588 0l-5.514 4.007a.5.5 0 0 1-.77-.56l2.106-6.482a.5.5 0 0 0-.181-.56L.832 8.197a.5.5 0 0 1 .294-.904h6.817a.5.5 0 0 0 .475-.346z"/></symbol></svg>
-    <div class="testi-grid">
-      <div class="testi-card reveal-init">
-        <h3 class="testi-name">Talita</h3>
-        <p class="testi-quote">Estou muito feliz com os resultados, com os 20 quilos perdidos. Achei que nunca iria chegar nesse peso novamente. Agradeço pela dedicação, pela paciência e pelo profissionalismo. A dieta é muito fácil e prática de seguir, e os treinos dão um UP.</p>
-        <div class="testi-stars" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg></div>
-      </div>
-      <div class="testi-card reveal-init">
-        <h3 class="testi-name">Carla</h3>
-        <p class="testi-quote">Tenho 38 anos, cheia de questões internas e traumas, mas pela primeira vez na vida tô me aceitando e amando cada etapa dessa nova vida e imagem. É como ver a minha imagem no espelho e me reconhecer nela. Seu trabalho agrega demais na vida das pessoas.</p>
-        <div class="testi-stars" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg></div>
-      </div>
-    </div>
     <div class="g-reviews">
       <a class="g-summary" href="https://www.google.com/maps/place/Renan+C%C3%A1ceres+Consultoria+Esportiva+e+Performance/@-23.215125,-46.8337093,17z" target="_blank" rel="noopener" data-track="google_reviews_link">
         <span class="g-score">5,0</span>

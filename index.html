@@ -440,8 +440,8 @@
   .g-summary:hover .g-count{color:var(--accent-bright);}
   .g-score{font-size:26px; font-weight:800; color:var(--ink); letter-spacing:-.02em;}
   .g-count{transition:color .25s ease;}
-  .g-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;}
-  .g-card{background:var(--bg-raised); border:1px solid var(--line); border-radius:22px; padding:24px 24px 26px; box-shadow:var(--shadow-sm); transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;}
+  .g-grid{display:flex; flex-wrap:wrap; justify-content:center; gap:20px; align-items:stretch;}
+  .g-card{flex:0 1 calc((100% - 40px) / 3); background:var(--bg-raised); border:1px solid var(--line); border-radius:22px; padding:24px 24px 26px; box-shadow:var(--shadow-sm); transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;}
   .g-card:hover{transform:translateY(-5px); border-color:rgba(255,255,255,.14); box-shadow:var(--shadow-md);}
   .g-head{display:flex; align-items:center; gap:12px; margin-bottom:16px;}
   .g-avatar{width:46px; height:46px; border-radius:50%; object-fit:cover; flex:none; background:var(--bg-alt);}
@@ -451,7 +451,7 @@
   .g-logo{width:20px; height:20px; margin-left:auto; flex:none;}
   .g-text{color:var(--ink-muted); font-size:14.5px; line-height:1.7;}
   @media (max-width:900px){
-    .g-grid{display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:6px 20px 10px; scroll-padding:0 20px; gap:16px; touch-action:pan-x pan-y;}
+    .g-grid{flex-wrap:nowrap; justify-content:flex-start; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; margin:0 -20px; padding:6px 20px 10px; scroll-padding:0 20px; gap:16px; touch-action:pan-x pan-y;}
     .g-grid::-webkit-scrollbar{display:none;}
     .g-card{flex:0 0 82%; max-width:380px; scroll-snap-align:start;}
   }
@@ -965,6 +965,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C.9 16.4 0 20.1 0 24s.9 7.6 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
         </div>
         <p class="g-text">Faço acompanhamento com o Renan a muito tempo e os resultados são incríveis! Ele sempre personaliza meus treinos e dietas a minha rotina e me auxilia a evoluir sempre! Recomendo o serviço dele!</p>
+      </article>
+      <article class="g-card reveal-init">
+        <div class="g-head">
+          <img class="g-avatar" src="assets/google-douglas.png" alt="Foto de Douglas Pinto" width="46" height="46" loading="lazy">
+          <div><div class="g-name">Douglas Pinto</div><div class="testi-stars g-stars" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg></div></div>
+          <svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C.9 16.4 0 20.1 0 24s.9 7.6 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
+        </div>
+        <p class="g-text">O Renan é muito parceiro e competente, direciona sempre para atingir os seus objetivos com treino e dieta equilibrados. Fala verdades e procuras saídas quando os nossos resultados não vêm como queríamos, mesmo que quase sempre por nossa culpa!</p>
+      </article>
+      <article class="g-card reveal-init">
+        <div class="g-head">
+          <img class="g-avatar" src="assets/google-viviane.png" alt="Foto de viviane ferreira silva" width="46" height="46" loading="lazy">
+          <div><div class="g-name">viviane ferreira silva</div><div class="testi-stars g-stars" role="img" aria-label="5 de 5 estrelas"><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg><svg viewBox="0 0 22 20" fill="currentColor" aria-hidden="true"><use href="#star"/></svg></div></div>
+          <svg class="g-logo" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7c-.5-1.4-.8-3-.8-4.7s.3-3.2.8-4.7l-7.9-6.1C.9 16.4 0 20.1 0 24s.9 7.6 2.6 10.8l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg>
+        </div>
+        <p class="g-text">Minha experiência está sendo ótima...conseguindo alcançar tds meus objetivos...eliminei mt peso...hj estou -33off na balança...porcentual de gordura dimunui mt...aumentado peso de massa magra...além da saúde mental e corporal melhorou demais...auto estima nei se fala...ótimo profissional me ajudando a buscar o meu melhor físico...parabéns Renan excelente profissional...👏🏽👏🏽👏🏽👏🏽</p>
       </article>
       </div>
     </div>
